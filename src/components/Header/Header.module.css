@@ -1,0 +1,55 @@
+.header {
+  background-color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+  height: 60px; /* Точна висота хедера згідно з новим макетом */
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1165px; /* Відповідає контентній області як на макеті */
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  text-decoration: none;
+  color: #121417;
+  font-weight: bold;
+  font-size: 20px; /* Зменшений розмір для кращого вигляду */
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 24px;
+  margin-right: 8px;
+}
+
+.accent {
+  color: #3470ff;
+}
+
+.navigation {
+  display: flex;
+  gap: 30px; /* Зменшений відступ між посиланнями */
+}
+
+.navLink {
+  text-decoration: none;
+  color: #121417;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navLink:hover {
+  color: #3470ff;
+}
+
+.active {
+  color: #3470ff;
+}

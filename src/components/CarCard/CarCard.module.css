@@ -1,0 +1,103 @@
+.card {
+  width: 274px;
+  height: 426px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 268px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.favoriteButton {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  color: #ffffff;
+}
+
+.favoriteButton.isFavorite {
+  color: #3470ff;
+}
+
+.favoriteButton:hover {
+  color: #3470ff;
+}
+
+.infoContainer {
+  padding: 14px 0;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.carTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #121417;
+  margin: 0;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 500;
+  color: #121417;
+}
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.tag {
+  font-size: 12px;
+  color: rgba(18, 20, 23, 0.5);
+  position: relative;
+  padding-right: 6px;
+}
+
+.tag:not(:last-child)::after {
+  content: '|';
+  position: absolute;
+  right: 0;
+  color: rgba(18, 20, 23, 0.1);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  background-color: #3470ff;
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0b44cd;
+}

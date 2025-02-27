@@ -1,0 +1,89 @@
+.filterContainer {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 50px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #8a8a89;
+}
+
+.select {
+  padding: 14px 18px;
+  background-color: #f7f7fb;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  color: #121417;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.select::placeholder {
+  color: #8a8a89;
+}
+
+.input {
+  padding: 14px 18px;
+  background-color: #f7f7fb;
+  border: none;
+  font-size: 16px;
+  color: #121417;
+  width: 160px;
+}
+
+.input::placeholder {
+  color: #8a8a89;
+}
+
+.mileageContainer {
+  display: flex;
+}
+
+.leftInput {
+  border-radius: 14px 0 0 14px;
+  border-right: 1px solid rgba(138, 138, 137, 0.2);
+}
+
+.rightInput {
+  border-radius: 0 14px 14px 0;
+}
+
+.primaryButton {
+  padding: 14px 44px;
+  background-color: #3470ff;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: fit-content;
+  align-self: flex-end;
+}
+
+.primaryButton:hover {
+  background-color: #0b44cd;
+}
+
+.secondaryButton {
+  padding: 14px 44px;
+  background-color: #f7f7fb;
+  border: none;
+  border-radius: 12px;
+  color: #121417;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: fit-content;
+  align-self: flex-end;
+}
+
+.secondaryButton:hover {
+  background-color: #e7e7eb;
+}

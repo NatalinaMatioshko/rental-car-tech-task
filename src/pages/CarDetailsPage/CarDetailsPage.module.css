@@ -1,0 +1,182 @@
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: #3470FF;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.backButton:before {
+  content: '←';
+  margin-right: 8px;
+}
+
+.backButton:hover {
+  text-decoration: underline;
+}
+
+.carImage {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 24px;
+}
+
+.carTitle {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.tag {
+  font-size: 12px;
+  color: rgba(18, 20, 23, 0.5);
+  position: relative;
+  padding-right: 6px;
+}
+
+.tag:not(:last-child)::after {
+  content: '|';
+  position: absolute;
+  right: 0;
+  color: rgba(18, 20, 23, 0.1);
+}
+
+.description {
+  font-size: 14px;
+  color: #121417;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.featuresList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.featureItem {
+  font-size: 12px;
+  color: rgba(18, 20, 23, 0.5);
+  background-color: #F9F9F9;
+  padding: 7px 14px;
+  border-radius: 35px;
+}
+
+.conditionsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.conditionItem {
+  font-size: 12px;
+  color: #363535;
+  background-color: #F9F9F9;
+  padding: 7px 14px;
+  border-radius: 35px;
+}
+
+.conditionItem span {
+  color: #3470FF;
+  font-weight: 600;
+}
+
+.rentButton {
+  padding: 14px 44px;
+  background-color: #3470FF;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.rentButton:hover {
+  background-color: #0B44CD;
+}
+
+.formTitle {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.bookingForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input {
+  padding: 14px 18px;
+  background-color: #F7F7FB;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  color: #121417;
+}
+
+.input::placeholder {
+  color: #8A8A89;
+}
+
+.textarea {
+  padding: 14px 18px;
+  background-color: #F7F7FB;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  color: #121417;
+  min-height: 100px;
+  resize: vertical;
+}
+
+.textarea::placeholder {
+  color: #8A8A89;
+}
+
+.submitButton {
+  padding: 14px 44px;
+  background-color: #3470FF;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: #0B44CD;
+}
