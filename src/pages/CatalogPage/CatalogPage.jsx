@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getCars, resetCars } from "../../redux/carsSlice";
-import CarCard from "../../components/CarCard/CarCard";
-import FilterForm from "../../components/FilterForm/FilterForm";
-import Loader from "../../components/Loader/Loader";
-import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
-import styles from "./CatalogPage.module.css";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCars, resetCars } from '../../redux/carsSlice';
+import CarCard from '../../components/CarCard/CarCard';
+import FilterForm from '../../components/FilterForm/FilterForm';
+import Loader from '../../components/Loader/Loader';
+import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
+import styles from './CatalogPage.module.css';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -17,14 +17,14 @@ const CatalogPage = () => {
     totalPages,
   } = useSelector((state) => state.cars);
   const { selectedBrand, selectedPrice, minMileage, maxMileage } = useSelector(
-    (state) => state.filters
+    (state) => state.filters,
   );
 
   const fetchCars = async (params) => {
     try {
       dispatch(getCars(params));
     } catch (error) {
-      console.error("Error fetching cars:", error);
+      console.error('Error fetching cars:', error);
     }
   };
 

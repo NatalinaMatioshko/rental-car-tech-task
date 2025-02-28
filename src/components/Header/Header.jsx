@@ -1,6 +1,6 @@
-import { Link, useLocation } from "react-router-dom";
-import styles from "./Header.module.css";
-import logo from "../../images/logo.svg";
+import { Link, useLocation } from 'react-router-dom';
+import styles from './Header.module.css';
+import logo from '../../images/Logo.svg';
 
 const Header = () => {
   const location = useLocation();
@@ -15,7 +15,7 @@ const Header = () => {
           <Link
             to="/"
             className={`${styles.navLink} ${
-              location.pathname === "/" ? styles.active : ""
+              location.pathname === '/' ? styles.active : ''
             }`}
           >
             Home
@@ -23,7 +23,7 @@ const Header = () => {
           <Link
             to="/catalog"
             className={`${styles.navLink} ${
-              location.pathname.includes("/catalog") ? styles.active : ""
+              location.pathname.includes('/catalog') ? styles.active : ''
             }`}
           >
             Catalog
