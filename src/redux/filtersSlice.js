@@ -1,25 +1,25 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchBrands } from '../services/api';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { fetchBrands } from "../services/api";
 
 export const getBrands = createAsyncThunk(
-  'filters/getBrands',
+  "filters/getBrands",
   async (_, { rejectWithValue }) => {
     try {
       return await fetchBrands();
     } catch (error) {
       return rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 const filtersSlice = createSlice({
-  name: 'filters',
+  name: "filters",
   initialState: {
     brands: [],
-    selectedBrand: '',
-    selectedPrice: '',
-    minMileage: '',
-    maxMileage: '',
+    selectedBrand: "",
+    selectedPrice: "",
+    minMileage: "",
+    maxMileage: "",
     loading: false,
     error: null,
   },
@@ -37,10 +37,10 @@ const filtersSlice = createSlice({
       state.maxMileage = payload;
     },
     resetFilters: (state) => {
-      state.selectedBrand = '';
-      state.selectedPrice = '';
-      state.minMileage = '';
-      state.maxMileage = '';
+      state.selectedBrand = "";
+      state.selectedPrice = "";
+      state.minMileage = "";
+      state.maxMileage = "";
     },
   },
   extraReducers: (builder) => {

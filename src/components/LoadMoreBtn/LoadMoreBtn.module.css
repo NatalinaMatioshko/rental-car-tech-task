@@ -1,0 +1,29 @@
+.loadMoreButton {
+  display: block;
+  margin: 0 auto;
+  padding: 12px 24px;
+  background-color: #f7f7f7;
+  color: #101828;
+  border: 1px solid #3470ff;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  min-width: 150px;
+}
+
+.loadMoreButton:hover {
+  border: 1px solid #0b44cd;
+  transform: scale(1.05);
+}
+
+.loadMoreButton:active {
+  transform: scale(0.98);
+}
+
+.loadMoreButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

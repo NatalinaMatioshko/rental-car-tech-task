@@ -1,3 +1,3 @@
 export const formatMileage = (mileage) => {
-  return mileage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  return mileage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 };

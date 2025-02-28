@@ -1,41 +1,24 @@
 .catalogContainer {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 80px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .title {
   font-size: 36px;
-  margin-bottom: 48px;
+  margin-bottom: 18px;
   text-align: center;
 }
 
 .carsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(274px, 1fr));
+  grid-template-columns: repeat(4, 276px);
+  justify-content: center;
   gap: 29px;
-  margin-bottom: 100px;
-}
-
-.loadMoreButton {
-  display: block;
-  margin: 0 auto;
-  background: none;
-  border: none;
-  color: #3470ff;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.loadMoreButton:hover {
-  text-decoration: underline;
-}
-
-.loadMoreButton:disabled {
-  color: #8a8a89;
-  cursor: not-allowed;
-  text-decoration: none;
+  margin-bottom: 20px;
 }
 
 .noCarsMessage {
@@ -45,8 +28,35 @@
   margin-top: 50px;
 }
 
-@media (max-width: 768px) {
+.errorMessage {
+  text-align: center;
+  color: #d32f2f;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin: 20px 0;
+}
+
+@media (max-width: 1200px) {
   .carsGrid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 276px);
+  }
+}
+
+@media (max-width: 900px) {
+  .carsGrid {
+    grid-template-columns: repeat(2, 276px);
+  }
+}
+
+@media (max-width: 630px) {
+  .carsGrid {
+    grid-template-columns: repeat(1, 276px);
   }
 }

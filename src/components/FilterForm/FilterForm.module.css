@@ -1,7 +1,13 @@
 .filterContainer {
   display: flex;
+  flex-wrap: wrap;
   gap: 18px;
   margin-bottom: 50px;
+  justify-content: center;
+}
+
+.filterGroup {
+  position: relative;
 }
 
 .label {
@@ -11,7 +17,12 @@
   color: #8a8a89;
 }
 
-.select {
+.selectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.selectButton {
   padding: 14px 18px;
   background-color: #f7f7fb;
   border: none;
@@ -19,11 +30,53 @@
   font-size: 16px;
   color: #121417;
   cursor: pointer;
-  min-width: 200px;
+  min-width: 224px;
+  text-align: left;
+  position: relative;
+  padding-right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.select::placeholder {
-  color: #8a8a89;
+.selectButton:hover {
+  background-color: #f1f1fa;
+}
+
+.selectArrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: currentColor;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 272px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 36px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  margin-top: 4px;
+  padding: 14px 0;
+}
+
+.dropdownItem {
+  padding: 8px 18px;
+  font-size: 16px;
+  color: rgba(18, 20, 23, 0.7);
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.dropdownItem:hover {
+  color: #121417;
+  background-color: #f7f7f8;
 }
 
 .input {
@@ -70,20 +123,19 @@
   background-color: #0b44cd;
 }
 
-.secondaryButton {
-  padding: 14px 44px;
-  background-color: #f7f7fb;
-  border: none;
-  border-radius: 12px;
-  color: #121417;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  height: fit-content;
-  align-self: flex-end;
-}
+@media (max-width: 768px) {
+  .filterContainer {
+    flex-direction: column;
+    align-items: center;
+  }
 
-.secondaryButton:hover {
-  background-color: #e7e7eb;
+  .selectButton,
+  .mileageContainer {
+    width: 100%;
+  }
+
+  .primaryButton {
+    width: 100%;
+    align-self: center;
+  }
 }

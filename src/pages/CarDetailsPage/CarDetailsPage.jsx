@@ -1,37 +1,21 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { getCarById } from '../../redux/cars/carsSlice';
-import Loader from '../../components/Loader/Loader';
-import Modal from '../../components/Modal/Modal';
-import { formatMileage } from '../../helpers/formatMileage';
-import styles from './CarDetailsPage.module.css';
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getCarById } from "../../redux/carsSlice";
+import Loader from "../../components/Loader/Loader";
+import BookingForm from "../../components/BookingForm/BookingForm";
+import { formatMileage } from "../../helpers/formatMileage";
+import sprite from "../../images/sprite.svg"; 
+import styles from "./CarDetailsPage.module.css";
 
 const CarDetailsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { selectedCar: car, loading } = useSelector((state) => state.cars);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getCarById(id));
   }, [dispatch, id]);
-
-  const handleRentClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleBookingSubmit = (e) => {
-    e.preventDefault();
-    // У реальному проекті тут був би запит на сервер для оформлення оренди
-    toast.success('Your booking has been successfully submitted!');
-    setIsModalOpen(false);
-  };
-
-  const handleGoBack = () => {
-    window.history.back();
-  };
 
   if (loading || !car) {
     return (
@@ -41,110 +25,175 @@ const CarDetailsPage = () => {
     );
   }
 
-  // Розбиваємо умови оренди для відображення
-  const formattedConditions = car.rentalConditions.map((condition) => {
-    if (condition.includes('Minimum age')) {
-      const [text, age] = condition.split(': ');
-      return { text, value: age };
-    }
-    return { text: condition };
-  });
+ 
+  const addressParts = car.address.split(", ");
+  const city = addressParts[1] || "";
+  const country = addressParts[2] || "";
 
   return (
     <div className={styles.container}>
-      <button className={styles.backButton} onClick={handleGoBack}>
-        Go back
-      </button>
+      <div className={styles.contentWrapper}>
+        {/* LEFT COLUMN  */}
+        <div className={styles.leftColumn}>
+          {/* CAR IMAGE */}
+          <div className={styles.imageContainer}>
+            <img
+              src={car.img}
+              alt={`${car.brand} ${car.model}`}
+              className={styles.carImage}
+            />
+          </div>
 
-      <img
-        src={car.img}
-        alt={`${car.brand} ${car.model}`}
-        className={styles.carImage}
-      />
+          {/* BOOKING*/}
+          <div className={styles.bookingFormContainer}>
+            <BookingForm />
+          </div>
+        </div>
 
-      <h1 className={styles.carTitle}>
-        {car.brand} {car.model}, {car.year}
-      </h1>
+        {/* RIGHT COLUMN */}
+        <div className={styles.rightColumn}>
+          {/* TITLE & MAIN */}
+          <h1 className={styles.carTitle}>
+            {car.brand} {car.model}, {car.year}
+          </h1>
 
-      <div className={styles.tagsContainer}>
-        <span className={styles.tag}>{car.address.split(', ')[1]}</span>
-        <span className={styles.tag}>{car.address.split(', ')[2]}</span>
-        <span className={styles.tag}>Id: {car.id}</span>
-        <span className={styles.tag}>Year: {car.year}</span>
-        <span className={styles.tag}>Type: {car.type}</span>
-        <span className={styles.tag}>
-          Fuel Consumption: {car.fuelConsumption}
-        </span>
-        <span className={styles.tag}>Engine Size: {car.engineSize}</span>
+          <div className={styles.locationInfo}>
+            <svg className={styles.icon} width="16" height="16">
+              <use href={`${sprite}#icon-location`}></use>
+            </svg>
+            {city}, {country}
+            <span className={styles.mileageInfo}>
+              Mileage: {formatMileage(car.mileage)} km
+            </span>
+          </div>
+
+          <div className={styles.priceSection}>
+            <span className={styles.price}>${car.rentalPrice}</span>
+          </div>
+
+          <div className={styles.description}>
+            <p>{car.description}</p>
+          </div>
+
+          <div className={styles.carInfo}>
+            {/* RENTAL*/}
+            <div className={styles.sectionFirst}>
+              <h2 className={styles.sectionTitle}>Rental Conditions:</h2>
+              <ul className={styles.conditionsList}>
+                {car.rentalConditions.map((condition, index) => {
+                  if (condition.includes('Minimum age')) {
+                    const [text, age] = condition.split(': ');
+                    return (
+                      <li key={index} className={styles.conditionItem}>
+                        <svg
+                          className={styles.conditionIcon}
+                          width="16"
+                          height="16"
+                        >
+                          <use href={`${sprite}#icon-check`}></use>
+                        </svg>
+                        {text}: <span className={styles.highlight}>{age}</span>
+                      </li>
+                    );
+                  }
+                  return (
+                    <li key={index} className={styles.conditionItem}>
+                      <svg
+                        className={styles.conditionIcon}
+                        width="16"
+                        height="16"
+                      >
+                        <use href={`${sprite}#icon-check`}></use>
+                      </svg>
+                      {condition}
+                    </li>
+                  );
+                })}
+                <li className={styles.conditionItem}>
+                  <svg className={styles.conditionIcon} width="16" height="16">
+                    <use href={`${sprite}#icon-check`}></use>
+                  </svg>
+                  Security deposite required
+                </li>
+                <li className={styles.conditionItem}>
+                  <svg className={styles.conditionIcon} width="16" height="16">
+                    <use href={`${sprite}#icon-check`}></use>
+                  </svg>
+                  Valid driver`s license
+                </li>
+              </ul>
+            </div>
+            {/* Specifications */}
+            <div className={styles.section}>
+              <h2 className={styles.sectionTitle}>Car Specifications:</h2>
+              <ul className={styles.specsList}>
+                <li className={styles.specItem}>
+                  <svg className={styles.specIcon} width="16" height="16">
+                    <use href={`${sprite}#icon-calendar`}></use>
+                  </svg>
+                  Year: {car.year}
+                </li>
+                <li className={styles.specItem}>
+                  <svg className={styles.specIcon} width="16" height="16">
+                    <use href={`${sprite}#icon-car`}></use>
+                  </svg>
+                  Type: {car.type}
+                </li>
+                <li className={styles.specItem}>
+                  <svg className={styles.specIcon} width="16" height="16">
+                    <use href={`${sprite}#icon-gas`}></use>
+                  </svg>
+                  Fuel Consumption: {car.fuelConsumption}
+                </li>
+                <li className={styles.specItem}>
+                  <svg className={styles.specIcon} width="16" height="16">
+                    <use href={`${sprite}#icon-setting`}></use>
+                  </svg>
+                  Engine Size: {car.engineSize}
+                </li>
+              </ul>
+            </div>
+            {/* Accessories */}
+            <div className={styles.section}>
+              <h2 className={styles.sectionTitle}>
+                Accessories and functionalities:
+              </h2>
+              <ul className={styles.accessoriesList}>
+                {car.accessories.map((accessory, index) => (
+                  <li
+                    key={`accessory-${index}`}
+                    className={styles.accessoryItem}
+                  >
+                    <svg
+                      className={styles.accessoryIcon}
+                      width="16"
+                      height="16"
+                    >
+                      <use href={`${sprite}#icon-check`}></use>
+                    </svg>
+                    {accessory}
+                  </li>
+                ))}
+                {car.functionalities.map((functionality, index) => (
+                  <li
+                    key={`functionality-${index}`}
+                    className={styles.accessoryItem}
+                  >
+                    <svg
+                      className={styles.accessoryIcon}
+                      width="16"
+                      height="16"
+                    >
+                      <use href={`${sprite}#icon-check`}></use>
+                    </svg>
+                    {functionality}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <p className={styles.description}>{car.description}</p>
-
-      <h2 className={styles.sectionTitle}>Accessories and functionalities:</h2>
-      <ul className={styles.featuresList}>
-        {[...car.accessories, ...car.functionalities].map((feature, index) => (
-          <li key={index} className={styles.featureItem}>
-            {feature}
-          </li>
-        ))}
-      </ul>
-
-      <h2 className={styles.sectionTitle}>Rental Conditions:</h2>
-      <ul className={styles.conditionsList}>
-        {formattedConditions.map((condition, index) => (
-          <li key={index} className={styles.conditionItem}>
-            {condition.text}
-            {condition.value && <span>: {condition.value}</span>}
-          </li>
-        ))}
-        <li className={styles.conditionItem}>
-          Mileage: <span>{formatMileage(car.mileage)}</span>
-        </li>
-        <li className={styles.conditionItem}>
-          Price: <span>${car.rentalPrice}</span>
-        </li>
-      </ul>
-
-      <button className={styles.rentButton} onClick={handleRentClick}>
-        Rent Car
-      </button>
-
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2 className={styles.formTitle}>Book Your Car Now</h2>
-        <form className={styles.bookingForm} onSubmit={handleBookingSubmit}>
-          <input
-            type="text"
-            placeholder="Full Name"
-            required
-            className={styles.input}
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            required
-            className={styles.input}
-          />
-          <input
-            type="tel"
-            placeholder="Phone Number"
-            required
-            className={styles.input}
-          />
-          <input
-            type="date"
-            placeholder="Pickup Date"
-            required
-            className={styles.input}
-          />
-          <textarea
-            placeholder="Additional Comments"
-            className={styles.textarea}
-          />
-          <button type="submit" className={styles.submitButton}>
-            Submit Booking
-          </button>
-        </form>
-      </Modal>
     </div>
   );
 };

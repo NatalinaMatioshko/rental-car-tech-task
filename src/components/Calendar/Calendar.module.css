@@ -1,0 +1,122 @@
+.calendarContainer {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e1e1e1;
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  bottom: calc(100% + 10px);
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.monthTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #121417;
+  text-align: center;
+}
+
+.navButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  color: #3470ff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.navButton:hover {
+  background-color: #f5f5f5;
+}
+
+.weekdaysContainer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 10px 0;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.weekday {
+  font-size: 14px;
+  font-weight: 500;
+  color: #9b9b9b;
+  text-align: center;
+}
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, auto);
+  padding: 8px;
+  background: #ffffff;
+}
+
+.dayButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  width: 36px;
+  margin: 2px auto;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  font-size: 14px;
+  color: #121417;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dayButton:hover:not(.otherMonth):not(.selected) {
+  background-color: #f5f5f5;
+}
+
+.dayButton.selected {
+  background-color: #3470ff;
+  color: white;
+  font-weight: 500;
+}
+
+.dayButton.otherMonth {
+  color: #d0d0d0;
+  cursor: default;
+}
+
+.dayButton.today {
+  color: #3470ff;
+  font-weight: 600;
+}
+
+.dayButton:disabled {
+  cursor: default;
+}
+
+@media (max-width: 576px) {
+  .calendarContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    bottom: auto;
+  }
+}

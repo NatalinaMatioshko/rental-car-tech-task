@@ -1,85 +1,68 @@
-.heroSection {
-  position: relative;
-  height: 100vh; /* Висота на весь екран незалежно від розміру пристрою */
-  min-height: 582px; /* Мінімальна висота, щоб підтримувати макет на маленьких екранах */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('../../images/Home.png');
-  background-size: cover; /* Забезпечує заповнення всього контейнера */
-  background-position: center; /* Центрує зображення */
-  background-repeat: no-repeat; /* Запобігає повторенню зображення */
-  text-align: center;
-  width: 100%; /* Ширина на весь екран */
-  margin: 0; /* Прибираємо відступи */
-  padding: 0; /* Прибираємо відступи */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .contentContainer {
+    background-image: url('../../images/Home-2x.png');
+  }
 }
 
-.heroContent {
-  color: white;
-  max-width: 596px; /* Ширина згідно з макетом - 596px */
+.contentContainer {
+  background-image: url('../../images/Home.png');
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   text-align: center;
-  z-index: 1;
-  padding: 0 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 1440px;
+  height: calc(100vh - 60px);
+  padding-top: 60vh;
 }
 
 .heroTitle {
-  font-size: 56px;
-  font-weight: 700;
-  margin-bottom: 24px;
+  font-size: 60px;
   line-height: 1.2;
+  margin-bottom: 16px;
+  color: white;
 }
 
 .heroSubtitle {
-  font-size: 20px;
-  margin-bottom: 32px;
+  font-size: 24px;
+  line-height: 1.3;
+  margin-bottom: 40px;
+  color: white;
 }
 
 .button {
-  padding: 14px 44px;
+  font-family: 'Manrope', sans-serif;
   background-color: #3470ff;
   border: none;
   border-radius: 12px;
   color: white;
   font-size: 16px;
   font-weight: 600;
-  cursor: pointer;
   transition: background-color 0.3s;
-  width: 190px; /* Ширина кнопки згідно з макетом */
-  height: 60px; /* Висота кнопки 60px згідно з макетом */
+  width: 276px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  cursor: pointer;
 }
 
 .button:hover {
   background-color: #0b44cd;
 }
 
-.container {
-  max-width: 1165px; /* Ширина контентної області згідно з макетом */
-  margin: 0 auto;
-  padding: 0 20px;
+@media (min-width: 1440px), (min-resolution: 192dpi) {
+  .contentContainer {
+    background-image: url('../../images/Home-2x.png');
+    width: 100%;
+  }
 }
-
-/* Медіа-запити для різних розмірів екранів */
 @media (max-width: 768px) {
-  .featuresGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .heroTitle {
-    font-size: 42px;
-  }
-}
-
-/* Прибираємо вертикальні рухи для малих екранів */
-@media (max-height: 500px) {
-  .heroSection {
-    height: auto;
-    padding: 100px 0;
+  .contentContainer {
+    width: 100%;
   }
 }

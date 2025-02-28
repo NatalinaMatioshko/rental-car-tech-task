@@ -47,13 +47,13 @@ const carsSlice = createSlice({
       })
       .addCase(getCars.fulfilled, (state, { payload }) => {
         state.loading = false;
-        // Якщо це перша сторінка, замінити масив, інакше додати до існуючого
         if (state.page === 1) {
           state.items = payload.cars;
         } else {
           state.items = [...state.items, ...payload.cars];
         }
         state.totalPages = payload.totalPages;
+        state.page = state.page + 1;
       })
       .addCase(getCars.rejected, (state, { payload }) => {
         state.loading = false;

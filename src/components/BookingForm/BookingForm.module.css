@@ -1,0 +1,98 @@
+.bookingFormContainer {
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.formTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #121417;
+}
+
+.formSubtitle {
+  font-size: 14px;
+  color: #8a8a89;
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.formInput,
+.formTextarea {
+  padding: 12px 16px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%;
+  background-color: #f8f8f8;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  border-color: #3470ff;
+  outline: none;
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: #8a8a89;
+}
+
+.formTextarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.datePickerContainer {
+  position: relative;
+}
+
+.calendarIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.calendarIcon svg {
+  fill: #121417;
+}
+
+.submitButton {
+  margin-top: 8px;
+  padding: 12px 24px;
+  background-color: #3470ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.submitButton:hover {
+  background-color: #0b44cd;
+}
+
+.submitButton:disabled {
+  background-color: #b0c0e0;
+  cursor: not-allowed;
+}

@@ -1,182 +1,149 @@
 .container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 16px;
+  padding: 24px 16px;
 }
 
-.backButton {
-  background: none;
-  border: none;
-  color: #3470FF;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 20px;
+.contentWrapper {
   display: flex;
-  align-items: center;
+  gap: 72px;
 }
 
-.backButton:before {
-  content: '←';
-  margin-right: 8px;
+.leftColumn {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
 }
 
-.backButton:hover {
-  text-decoration: underline;
+.rightColumn {
+  flex: 1;
+  flex-direction: column;
+}
+
+.imageContainer {
+  margin-bottom: 24px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .carImage {
   width: 100%;
-  height: 400px;
+  height: auto;
+  display: block;
   object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 24px;
+}
+
+.bookingFormContainer {
+  width: 100%;
 }
 
 .carTitle {
-  font-size: 24px;
-  margin-bottom: 8px;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #121417;
 }
 
-.tagsContainer {
+.locationInfo {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 14px;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #121417;
 }
 
-.tag {
-  font-size: 12px;
-  color: rgba(18, 20, 23, 0.5);
-  position: relative;
-  padding-right: 6px;
+.mileageInfo {
+  margin-left: 24px;
+  display: flex;
+  align-items: center;
 }
 
-.tag:not(:last-child)::after {
-  content: '|';
-  position: absolute;
-  right: 0;
-  color: rgba(18, 20, 23, 0.1);
+.icon {
+  margin-right: 4px;
+  fill: currentColor;
+}
+
+.priceSection {
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #3470ff;
 }
 
 .description {
-  font-size: 14px;
-  color: #121417;
   margin-bottom: 24px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #121417;
 }
 
+.sectionFirst {
+  margin-bottom: 0;
+  margin-top: 68px;
+}
+.section {
+  margin-bottom: 0;
+  margin-top: 110px;
+}
+
+.carInfo {
+  margin-top: 68px;
+}
 .sectionTitle {
   font-size: 18px;
-  margin-bottom: 8px;
-}
-
-.featuresList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
-  padding: 0;
-  list-style: none;
-}
-
-.featureItem {
-  font-size: 12px;
-  color: rgba(18, 20, 23, 0.5);
-  background-color: #F9F9F9;
-  padding: 7px 14px;
-  border-radius: 35px;
-}
-
-.conditionsList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
-  padding: 0;
-  list-style: none;
-}
-
-.conditionItem {
-  font-size: 12px;
-  color: #363535;
-  background-color: #F9F9F9;
-  padding: 7px 14px;
-  border-radius: 35px;
-}
-
-.conditionItem span {
-  color: #3470FF;
   font-weight: 600;
+  margin-bottom: 12px;
+  color: #121417;
 }
 
-.rentButton {
-  padding: 14px 44px;
-  background-color: #3470FF;
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.rentButton:hover {
-  background-color: #0B44CD;
-}
-
-.formTitle {
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.bookingForm {
-  display: flex;
+.specsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
   flex-direction: column;
-  gap: 18px;
 }
 
-.input {
-  padding: 14px 18px;
-  background-color: #F7F7FB;
-  border: none;
-  border-radius: 14px;
-  font-size: 16px;
-  color: #121417;
+.conditionsList,
+.accessoriesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  flex-direction: column;
 }
 
-.input::placeholder {
-  color: #8A8A89;
-}
-
-.textarea {
-  padding: 14px 18px;
-  background-color: #F7F7FB;
-  border: none;
-  border-radius: 14px;
-  font-size: 16px;
-  color: #121417;
-  min-height: 100px;
-  resize: vertical;
-}
-
-.textarea::placeholder {
-  color: #8A8A89;
-}
-
-.submitButton {
-  padding: 14px 44px;
-  background-color: #3470FF;
-  border: none;
-  border-radius: 12px;
-  color: white;
+.specItem,
+.conditionItem,
+.accessoryItem {
+  display: flex;
+  align-items: center;
   font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  color: #121417;
+  padding: 4px 0;
 }
 
-.submitButton:hover {
-  background-color: #0B44CD;
+.specIcon,
+.conditionIcon,
+.accessoryIcon {
+  margin-right: 8px;
+  fill: #101828;
+  flex-shrink: 0;
+}
+
+@media (max-width: 992px) {
+  .contentWrapper {
+    flex-direction: column;
+  }
+
+  .leftColumn,
+  .rightColumn {
+    max-width: 100%;
+  }
 }
